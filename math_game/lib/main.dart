@@ -22,6 +22,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+Widget _buildTitle() => Text(
+      "title",
+      textAlign: TextAlign.center,
+    );
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
@@ -35,6 +40,7 @@ class MyHomePage extends StatelessWidget {
           ),
           elevation: 0,
           backgroundColor: Color(0xFF1c3763)),
+
       body: Container(
         child: TextInputWidget(),
         decoration: BoxDecoration(
@@ -90,6 +96,7 @@ class _TextInputWidgetState extends State<TextInputWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        _buildTitle(),
         TextField(
           controller: this.controller,
           cursorColor: Colors.white,
