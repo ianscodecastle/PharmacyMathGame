@@ -1,6 +1,8 @@
 // ignore_for_file: unnecessary_this, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'constants.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My App',
       theme: ThemeData(
+        //scaffoldBackgroundColor: Colors.indigo,
         //primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: HomeScreen(),
     );
   }
 }
@@ -39,15 +42,15 @@ class MyHomePage extends StatelessWidget {
             'Pharmacy Math Game',
           ),
           elevation: 0,
-          backgroundColor: Color(0xFF1c3763)),
+          backgroundColor: kPrimaryColor),
 
       body: Container(
         child: TextInputWidget(),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: const [
-              Color(0xFF1c3763),
-              Colors.grey,
+              kPrimaryColor,
+              kSecondaryColor,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -55,13 +58,6 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class TestWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text('Hello World!');
   }
 }
 
