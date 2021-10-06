@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/constants.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +13,10 @@ import 'dart:convert';
 TextEditingController usernameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
-List arr = List.filled(5, null, growable: false);
+List arr = List.filled(3, null, growable: false);
+// arr[0] = username
+// arr[1] = password
+// arr[2] = email
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -52,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                 //border: UnderlineInputBorder(),
 
                 labelText: 'Enter your username'),
-            onChanged: (String text) => checkUsername(text),
+            onChanged: (String username) => checkUsername(username),
           ),
           TextField(
             controller: passwordController,
@@ -60,29 +66,59 @@ class LoginScreen extends StatelessWidget {
             decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Enter your password'),
-            onChanged: (String text) => checkPassword(text),
+            onChanged: (String password) => checkPassword(password),
           ),
           SizedBox(height: 15),
-
-          ElevatedButton(
-            child: Text('Forgot password'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.indigo,
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              textStyle: TextStyle(
-                //color: Colors.black,
-                fontWeight: FontWeight.bold,
+          RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: 'Forgot password? ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
-            ),
-            onPressed: () => {
-              forgotPassword()
-              //respond to button press
-            },
+              TextSpan(
+                  text: 'Click here.',
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            forgetPasswordDialog(context),
+                      );
+                      //),
+                      //print('Login Text Clicked');
+                    }),
+            ]),
+          ),
+          SizedBox(height: 5),
+          RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: 'Don\'t have an account? ',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              TextSpan(
+                  text: 'Create one here.',
+                  style: TextStyle(
+                    color: Colors.blueAccent,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      print("TODO: add create new account functionality");
+                      //),
+                      //print('Login Text Clicked');
+                    }),
+            ]),
           ),
           SizedBox(height: 15),
           ElevatedButton(
-            child: Text('Login'),
+            child: Text('Sign in'),
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
               onPrimary: Colors.indigo,
@@ -93,7 +129,15 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             onPressed: () => {
-              checkLogin()
+              checkLogin(),
+              if (checkLogin() == false)
+                {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        incorrectPassword(context),
+                  )
+                }
               //respond to button press
             },
           )
@@ -103,19 +147,100 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-void checkUsername(String text) {
-  arr[0] = text;
+AlertDialog incorrectPassword(BuildContext context) {
+  return AlertDialog(
+    title: const Text('Incorrect username or password'),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      //mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    ),
+    actions: <Widget>[
+      ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+
+          // textColor: Theme.of(context).primaryColor,
+          child: const Text('Try again'),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.indigo,
+            onPrimary: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+            textStyle: TextStyle(
+              //color: Colors.black,
+              fontWeight: FontWeight.normal,
+            ),
+          )),
+      //),
+    ],
+  );
 }
 
-void checkPassword(String text) {
-  arr[1] = text;
+AlertDialog forgetPasswordDialog(BuildContext context) {
+  return AlertDialog(
+    title: const Text('Enter in your email'),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        TextField(
+          //controller: passwordController,
+          style: TextStyle(color: Colors.black),
+
+          decoration: const InputDecoration(
+              border: UnderlineInputBorder(), labelText: 'Enter your email'),
+          onChanged: (String email) => saveEmail(email),
+        ),
+      ],
+    ),
+    actions: <Widget>[
+      ElevatedButton(
+          onPressed: () {
+            sendEmail();
+            Navigator.of(context).pop();
+          },
+
+          // textColor: Theme.of(context).primaryColor,
+          child: const Text('Send new password'),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.indigo,
+            onPrimary: Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+            textStyle: TextStyle(
+              //color: Colors.black,
+              fontWeight: FontWeight.normal,
+            ),
+          )),
+      //),
+    ],
+  );
 }
 
-void checkLogin() {
+void saveEmail(String email) {
+  arr[2] = email;
+}
+
+void sendEmail() {
+  print("TODO: add send email and change password functionality");
+}
+
+void checkUsername(String username) {
+  arr[0] = username;
+}
+
+void checkPassword(String password) {
+  arr[1] = password;
+}
+
+bool checkLogin() {
+  // TODO: connect to database and check login information
   if (arr[0] == "username" && arr[1] == "password") {
     print("correct login");
+    return true;
   } else {
     print("incorrect login");
+    return false;
   }
 }
 
