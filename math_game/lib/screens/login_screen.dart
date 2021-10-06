@@ -63,6 +63,7 @@ class LoginScreen extends StatelessWidget {
           TextField(
             controller: passwordController,
             style: TextStyle(color: Colors.white),
+            obscureText: true,
             decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
                 labelText: 'Enter your password'),
