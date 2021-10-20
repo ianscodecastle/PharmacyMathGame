@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'login_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,6 +74,8 @@ class StartButton extends StatelessWidget {
       ),
       onPressed: () {
         //respond to button press
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => LoginScreen()));
       },
     );
   }
