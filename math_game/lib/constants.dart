@@ -5,6 +5,5 @@ const kPrimaryColor = Colors.indigo;
 const kSecondaryColor = Colors.white;
 const kAccentColor = Colors.black;
 const kBackgroundColor = Colors.white;
-const kPrimaryGradient =
-    LinearGradient(colors: [Color(0xFF20184a), Colors.white]);
+const kPrimaryGradient = LinearGradient(colors: [Colors.indigo, Colors.white]);
 const kTextColor = Colors.white;
