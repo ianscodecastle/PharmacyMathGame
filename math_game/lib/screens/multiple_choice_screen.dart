@@ -24,7 +24,7 @@ class MultipleChoiceScreen extends StatelessWidget {
         backgroundColor: kPrimaryColor,
       ),
       body: Container(
-        decoration: BoxDecoration(),
+        decoration: BoxDecoration(gradient: kPrimaryGradient),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.start,
