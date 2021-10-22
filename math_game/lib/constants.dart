@@ -7,3 +7,6 @@ const kAccentColor = Colors.black;
 const kBackgroundColor = Colors.white;
 const kPrimaryGradient = LinearGradient(colors: [Colors.indigo, Colors.white]);
 const kTextColor = Colors.white;
+// const kPrimaryColor = Colors.blueGrey[900];
+// const kPrimaryColor = Colors.grey[900];
+// const kPrimaryColor = Colors.grey[400];
