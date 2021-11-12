@@ -10,6 +10,8 @@ const kPrimaryGradient = LinearGradient(
     end: Alignment.bottomRight,
     colors: [Colors.indigo, Colors.white]);
 const kTextColor = Colors.white;
+const correctColor = Colors.green;
+const incorrectColor = Colors.red;
 // const kPrimaryColor = Colors.blueGrey[900];
 // const kPrimaryColor = Colors.grey[900];
 // const kPrimaryColor = Colors.grey[400];

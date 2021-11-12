@@ -11,6 +11,8 @@ List answers = List.filled(5, null, growable: false);
 // answers[3] = multiple choice answer #3
 // answers[4] = multiple choice answer #4
 
+MaterialColor color = Colors.blue;
+
 class MultipleChoiceScreen extends StatelessWidget {
   const MultipleChoiceScreen({Key? key}) : super(key: key);
 
@@ -74,7 +76,10 @@ class StartButton extends StatelessWidget {
         children: <Widget>[
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                fixedSize: const Size(400, 50), primary: Colors.blueAccent),
+                fixedSize: const Size(400, 50),
+                primary: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50))),
             onPressed: () {
               if (checkChoice(1) == false) {
                 showDialog(
@@ -95,7 +100,10 @@ class StartButton extends StatelessWidget {
           SizedBox(height: 15),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                fixedSize: const Size(400, 50), primary: Colors.blueAccent),
+                fixedSize: const Size(400, 50),
+                primary: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #2"),
             onPressed: () {
               if (checkChoice(2) == false) {
@@ -114,7 +122,10 @@ class StartButton extends StatelessWidget {
           SizedBox(height: 15),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                fixedSize: const Size(400, 50), primary: Colors.blueAccent),
+                fixedSize: const Size(400, 50),
+                primary: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #3"),
             onPressed: () {
               if (checkChoice(3) == false) {
@@ -133,7 +144,10 @@ class StartButton extends StatelessWidget {
           SizedBox(height: 15),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                fixedSize: const Size(400, 50), primary: Colors.blueAccent),
+                fixedSize: const Size(400, 50),
+                primary: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #4"),
             onPressed: () {
               if (checkChoice(4) == false) {
