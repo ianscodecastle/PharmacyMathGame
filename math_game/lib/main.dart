@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_game/screens/multiple_choice_screen.dart';
 import 'package:math_game/screens/quiz/quiz_screen.dart';
+import 'package:math_game/screens/results_screen.dart';
 import 'constants.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: ResultScreen(),
     );
   }
 }
