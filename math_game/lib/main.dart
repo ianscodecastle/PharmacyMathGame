@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MultipleChoiceScreen(),
+      home: HomeScreen(),
     );
   }
 }

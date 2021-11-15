@@ -10,10 +10,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        title: const Text('Hello'),
-        backgroundColor: kPrimaryColor,
+        //title: const Text('Hello'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Container(
         decoration: BoxDecoration(gradient: kPrimaryGradient),
@@ -41,7 +43,7 @@ class AlignedMainText extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Text(
-        'Welcome to AppName',
+        'Welcome to Pharmath',
         textAlign: TextAlign.center,
         style: TextStyle(
           color: kSecondaryColor,
@@ -62,10 +64,10 @@ class StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text('BUTTON'),
+      child: Text('Get Started'),
       style: ElevatedButton.styleFrom(
         primary: Colors.white,
-        onPrimary: Colors.indigo,
+        onPrimary: Color(0xff355C7D),
         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
         textStyle: TextStyle(
           //color: Colors.black,
