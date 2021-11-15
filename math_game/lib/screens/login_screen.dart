@@ -25,124 +25,129 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('Pharmacy Math Game'),
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              'Login',
-              //textAlign: TextAlign.center,
-              style: TextStyle(
-                color: kSecondaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                //fontFamily: 'Impact',
-              ),
-            ),
-          ),
-          SizedBox(height: 25), //adds empty space
-
-          TextField(
-            controller: usernameController,
-            style: TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
-
-                //fillColor: Colors.grey,
-                //filled: true,
-                //border: UnderlineInputBorder(),
-
-                labelText: 'Enter your username'),
-            onChanged: (String username) => checkUsername(username),
-          ),
-          TextField(
-            controller: passwordController,
-            style: TextStyle(color: Colors.white),
-            obscureText: true,
-            decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Enter your password'),
-            onChanged: (String password) => checkPassword(password),
-          ),
-          SizedBox(height: 15),
-          RichText(
-            text: TextSpan(children: [
-              TextSpan(
-                text: 'Forgot password? ',
+      body: Container(
+        decoration: BoxDecoration(gradient: kPrimaryGradient),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Login',
+                //textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: kSecondaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  //fontFamily: 'Impact',
                 ),
               ),
-              TextSpan(
-                  text: 'Click here.',
+            ),
+            SizedBox(height: 25), //adds empty space
+
+            TextField(
+              controller: usernameController,
+              style: TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
+
+                  //fillColor: Colors.grey,
+                  //filled: true,
+                  //border: UnderlineInputBorder(),
+
+                  labelText: 'Enter your username'),
+              onChanged: (String username) => checkUsername(username),
+            ),
+            TextField(
+              controller: passwordController,
+              style: TextStyle(color: Colors.white),
+              obscureText: true,
+              decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Enter your password'),
+              onChanged: (String password) => checkPassword(password),
+            ),
+            SizedBox(height: 15),
+            RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                  text: 'Forgot password? ',
                   style: TextStyle(
-                    color: Colors.blueAccent,
+                    color: Colors.white,
                   ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) =>
-                            forgetPasswordDialog(context),
-                      );
-                      //),
-                      //print('Login Text Clicked');
-                    }),
-            ]),
-          ),
-          SizedBox(height: 5),
-          RichText(
-            text: TextSpan(children: [
-              TextSpan(
-                text: 'Don\'t have an account? ',
-                style: TextStyle(
-                  color: Colors.white,
+                ),
+                TextSpan(
+                    text: 'Click here.',
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              forgetPasswordDialog(context),
+                        );
+                        //),
+                        //print('Login Text Clicked');
+                      }),
+              ]),
+            ),
+            SizedBox(height: 5),
+            RichText(
+              text: TextSpan(children: [
+                TextSpan(
+                  text: 'Don\'t have an account? ',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                TextSpan(
+                    text: 'Create one here.',
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        print("TODO: add create new account functionality");
+                        //),
+                        //print('Login Text Clicked');
+                      }),
+              ]),
+            ),
+            SizedBox(height: 15),
+            ElevatedButton(
+              child: Text('Sign in'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                onPrimary: Colors.indigo,
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle: TextStyle(
+                  //color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              TextSpan(
-                  text: 'Create one here.',
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                  ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      print("TODO: add create new account functionality");
-                      //),
-                      //print('Login Text Clicked');
-                    }),
-            ]),
-          ),
-          SizedBox(height: 15),
-          ElevatedButton(
-            child: Text('Sign in'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.indigo,
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-              textStyle: TextStyle(
-                //color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () => {
-              checkLogin(),
-              if (checkLogin() == false)
-                {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        incorrectPassword(context),
-                  )
-                }
-              //respond to button press
-            },
-          )
-        ],
+              onPressed: () => {
+                checkLogin(),
+                if (checkLogin() == false)
+                  {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          incorrectPassword(context),
+                    )
+                  }
+                //respond to button press
+              },
+            )
+          ],
+        ),
       ),
     );
   }
