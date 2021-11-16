@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
               controller: usernameController,
               style: TextStyle(color: Colors.white),
               decoration: const InputDecoration(
-
+                  icon: Icon(Icons.account_circle),
                   //fillColor: Colors.grey,
                   //filled: true,
                   //border: UnderlineInputBorder(),
@@ -67,6 +67,7 @@ class LoginScreen extends StatelessWidget {
               style: TextStyle(color: Colors.white),
               obscureText: true,
               decoration: const InputDecoration(
+                  icon: Icon(Icons.keyboard),
                   border: UnderlineInputBorder(),
                   labelText: 'Enter your password'),
               onChanged: (String password) => checkPassword(password),
