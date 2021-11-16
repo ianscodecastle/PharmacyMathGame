@@ -21,9 +21,12 @@ class MultipleChoiceScreen extends StatelessWidget {
     descriptions();
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Multiple Choice Question #1'),
-        backgroundColor: kPrimaryColor,
+        backgroundColor: kTransparent,
+        elevation: 1,
       ),
       body: Container(
         decoration: BoxDecoration(gradient: kPrimaryGradient),
@@ -77,7 +80,7 @@ class StartButton extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(400, 50),
-                primary: Colors.blueAccent,
+                primary: Color(0xff6C5B7B),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50))),
             onPressed: () {
@@ -101,7 +104,7 @@ class StartButton extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(400, 50),
-                primary: Colors.blueAccent,
+                primary: Color(0xff6C5B7B),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #2"),
@@ -123,7 +126,8 @@ class StartButton extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(400, 50),
-                primary: Colors.blueAccent,
+                primary: Color(0xff6C5B7B),
+                //elevation: 1,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #3"),
@@ -145,7 +149,7 @@ class StartButton extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(400, 50),
-                primary: Colors.blueAccent,
+                primary: Color(0xff6C5B7B),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50))),
             child: Text("Answer choice #4"),
@@ -187,60 +191,79 @@ bool checkChoice(int choice) {
 
 AlertDialog wrongAnswer(BuildContext context) {
   return AlertDialog(
-    title: const Text('You got it wrong!'),
+    title: const Text(
+      'You got it wrong!',
+      textAlign: TextAlign.center,
+    ),
     content: Column(
       mainAxisSize: MainAxisSize.min,
-      //mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      //crossAxisAlignment: CrossAxisAlignment.center,
     ),
     actions: <Widget>[
-      ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-
-          // textColor: Theme.of(context).primaryColor,
-          child: const Text('Try again'),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.indigo,
-            onPrimary: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-            textStyle: TextStyle(
-              //color: Colors.black,
-              fontWeight: FontWeight.normal,
-            ),
-          )),
-      //),
+      Center(
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                // textColor: Theme.of(context).primaryColor,
+                child: const Text('Try again'),
+                style: ElevatedButton.styleFrom(
+                  primary: kPrimaryColor,
+                  onPrimary: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  textStyle: TextStyle(
+                    //color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                  ),
+                )),
+            SizedBox(width: 5, height: 5),
+            TextButton(
+              onPressed: () {},
+              child: const Text('See why'),
+              style: TextButton.styleFrom(
+                primary: Colors.grey,
+                textStyle: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      ),
     ],
   );
 }
 
 AlertDialog rightAnswer(BuildContext context) {
   return AlertDialog(
-    title: const Text('You got it right!'),
+    title: const Text(
+      'You got it right!',
+      textAlign: TextAlign.center,
+    ),
     content: Column(
       mainAxisSize: MainAxisSize.min,
-      //mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
     ),
     actions: <Widget>[
-      ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-
-          // textColor: Theme.of(context).primaryColor,
-          child: const Text('Next Question'),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.indigo,
-            onPrimary: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-            textStyle: TextStyle(
-              //color: Colors.black,
-              fontWeight: FontWeight.normal,
-            ),
-          )),
-      //),
+      Center(
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Next Question'),
+            style: ElevatedButton.styleFrom(
+              primary: kPrimaryColor,
+              onPrimary: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              textStyle: TextStyle(
+                fontWeight: FontWeight.normal,
+              ),
+            )),
+      ),
     ],
   );
 }
