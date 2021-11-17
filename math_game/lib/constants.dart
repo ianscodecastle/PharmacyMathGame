@@ -7,8 +7,8 @@ const kAccentColor = Colors.black;
 const kBackgroundColor = Colors.white;
 const kTransparent = Colors.transparent;
 const kPrimaryGradient = LinearGradient(
-    //begin: Alignment.topLeft,
-    //end: Alignment.bottomRight,
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
     colors: [Color(0xff355C7D), Color(0xff6C5B7B), Color(0xffC06C84)]);
 const kTextColor = Colors.white;
 const correctColor = Colors.green;
