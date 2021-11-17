@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:math_game/screens/quiz/components/progress_bar_widget.dart';
 
 List answers = List.filled(5, null, growable: false);
 // answers[0] = correct answer
@@ -34,6 +35,7 @@ class MultipleChoiceScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
+            //ProgressIndicatorWidget(value: 0.5),
             AlignedMainText(),
             SizedBox(height: 25), //adds empty space
             StartButton()
