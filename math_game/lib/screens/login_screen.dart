@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                 TextSpan(
                     text: 'Click here.',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: kPrimaryColor,
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
@@ -110,7 +110,7 @@ class LoginScreen extends StatelessWidget {
                 TextSpan(
                     text: 'Create one here.',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: kPrimaryColor,
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
