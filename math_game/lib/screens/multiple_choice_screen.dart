@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:math_game/screens/fill_in_blank_screen.dart';
 import 'package:math_game/screens/quiz/components/progress_bar_widget.dart';
 
 List answers = List.filled(5, null, growable: false);
@@ -254,7 +255,9 @@ AlertDialog rightAnswer(BuildContext context) {
       Center(
         child: ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              //Navigator.of(context).pop();
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FillInBlankScreen()));
             },
             child: const Text('Next Question'),
             style: ElevatedButton.styleFrom(
