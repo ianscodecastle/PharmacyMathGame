@@ -10,6 +10,8 @@ import 'package:flutter_svg/svg.dart';
 import 'dart:core';
 import 'dart:convert';
 
+import 'package:math_game/screens/multiple_choice_screen.dart';
+
 TextEditingController usernameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
@@ -133,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () => {
-                checkLogin(),
+                //checkLogin(),
                 if (checkLogin() == false)
                   {
                     showDialog(
@@ -142,6 +144,11 @@ class LoginScreen extends StatelessWidget {
                           incorrectPassword(context),
                     )
                   }
+                else
+                  {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MultipleChoiceScreen()))
+                  },
                 //respond to button press
               },
             ),
@@ -158,25 +165,27 @@ AlertDialog incorrectPassword(BuildContext context) {
     content: Column(
       mainAxisSize: MainAxisSize.min,
       //mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
     ),
     actions: <Widget>[
-      ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+      Center(
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
 
-          // textColor: Theme.of(context).primaryColor,
-          child: const Text('Try again'),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.indigo,
-            onPrimary: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-            textStyle: TextStyle(
-              //color: Colors.black,
-              fontWeight: FontWeight.normal,
-            ),
-          )),
+            // textColor: Theme.of(context).primaryColor,
+            child: const Text('Try again'),
+            style: ElevatedButton.styleFrom(
+              primary: kPrimaryColor,
+              onPrimary: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+              textStyle: TextStyle(
+                //color: Colors.black,
+                fontWeight: FontWeight.normal,
+              ),
+            )),
+      ),
       //),
     ],
   );
