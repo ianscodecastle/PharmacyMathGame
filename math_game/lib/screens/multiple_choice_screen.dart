@@ -6,6 +6,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:math_game/screens/fill_in_blank_screen.dart';
 import 'package:math_game/screens/quiz/components/progress_bar_widget.dart';
 
+int score = 0;
+int totalQuestions = answers.length;
+
 List answers = List.filled(5, null, growable: false);
 // answers[0] = correct answer
 // answers[1] = multiple choice answer #1
@@ -93,6 +96,7 @@ class StartButton extends StatelessWidget {
                   builder: (BuildContext context) => wrongAnswer(context),
                 );
               } else if (checkChoice(1) == true) {
+                score += 1;
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => rightAnswer(context),

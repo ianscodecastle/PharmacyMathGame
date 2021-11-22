@@ -7,6 +7,11 @@ import 'package:math_game/screens/home_screen.dart';
 import 'package:math_game/screens/multiple_choice_screen.dart';
 import 'login_screen.dart';
 
+String congrats = 'Good job!\n You got $score out of $totalQuestions correct!';
+String tryHarder =
+    'Better luck next time!\nYou got $score out of $totalQuestions correct!';
+String logoutResponse = '';
+
 class ResultScreen extends StatelessWidget {
   const ResultScreen({Key? key}) : super(key: key);
   @override
@@ -42,10 +47,15 @@ class AlignedMainText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (score < 3) {
+      logoutResponse = tryHarder;
+    } else {
+      logoutResponse = congrats;
+    }
     return Align(
       alignment: Alignment.center,
       child: Text(
-        'Good Job!\n You Got __ out of __ Correct',
+        logoutResponse,
         textAlign: TextAlign.center,
         style: TextStyle(
           color: kSecondaryColor,
